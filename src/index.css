@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* PGE Institutional Theme (Light) */
+  --bg-main: #f8fafc; /* light gray/blue background */
+  --bg-sidebar: #0f3f2b; /* PGE dark green */
+  --bg-card: #ffffff;
+  --bg-input: #f1f5f9;
+  --bg-hover: #e2e8f0;
+  
+  --text-main: #1e293b; /* dark slate */
+  --text-muted: #64748b; /* slate 500 */
+  --text-sidebar: #f8fafc;
+  
+  --accent-color: #10b981; /* bright institutional green */
+  --accent-hover: #059669; /* darker green */
+  
+  /* Status Colors */
+  --status-pending: #f59e0b; /* amber */
+  --status-triado: #3b82f6;  /* blue */
+  --status-analysis: #8b5cf6; /* violet */
+  --status-third: #ef4444;    /* red */
+  --status-done: #10b981;     /* emerald */
+  
+  --border-color: #e2e8f0;
+  --glass-border: 1px solid #e2e8f0;
+  
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  
+  --transition: all 0.2s ease;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Typography */
+h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: -0.025em; color: var(--bg-sidebar); }
+h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: var(--bg-sidebar); }
+h3 { font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--bg-sidebar); }
+h4 { font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+
+/* Layouts */
+.app-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 260px;
+  background-color: var(--bg-sidebar);
+  color: var(--text-sidebar);
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1rem;
+  box-shadow: var(--shadow-md);
+  z-index: 20;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.topbar {
+  height: 70px;
+  background: #ffffff;
+  border-bottom: var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  box-shadow: var(--shadow-sm);
+  z-index: 10;
+}
+
+.page-wrapper {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+/* Components */
+.glass-panel {
+  background: var(--bg-card);
+  border: var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.card { padding: 1.5rem; }
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: var(--accent-color);
+  color: #fff;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--text-main);
+  border: 1px solid #cbd5e1; /* slate-300 */
+}
+
+.btn-outline:hover {
+  background-color: var(--bg-hover);
+}
+
+/* Forms */
+.form-group { margin-bottom: 1rem; }
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--bg-sidebar);
+}
+.form-control {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: var(--bg-input);
+  border: 1px solid #cbd5e1;
+  border-radius: var(--radius-md);
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
+  transition: var(--transition);
+}
+.form-control:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
+  background-color: #fff;
+}
+
+/* Kanban */
+.kanban-board {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  height: calc(100vh - 180px);
+}
+
+.kanban-col {
+  flex: 0 0 320px;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-input);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  border: var(--glass-border);
+}
+
+.kanban-col-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #cbd5e1;
+}
+
+.kanban-card {
+  background-color: #fff;
+  border: 1px solid #cbd5e1;
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  cursor: grab;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+
+.kanban-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--accent-color);
+}
+
+/* Utilities */
+.text-muted { color: var(--text-muted); }
+.text-sm { font-size: 0.875rem; }
+.text-xs { font-size: 0.75rem; }
+.flex { display: flex; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.gap-2 { gap: 0.5rem; }
+.gap-4 { gap: 1rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mt-4 { margin-top: 1rem; }
+.w-full { width: 100%; }
+
+/* Gantt Chart Custom Grid - Light Theme */
+.gantt-container {
+  overflow-x: auto;
+  border: var(--glass-border);
+  border-radius: var(--radius-lg);
+  background: #fff;
+}
+.gantt-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1000px;
+}
+.gantt-table th, .gantt-table td {
+  border: 1px solid #cbd5e1;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+}
+.gantt-header-row th {
+  background: #f1f5f9;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  color: var(--bg-sidebar);
+}
+.gantt-cell {
+  text-align: center;
+  min-width: 30px;
+}
+.gantt-cell-weekend {
+  background-color: #fef3c7; /* amber-50 for weekends */
+}
+.gantt-bar {
+  background-color: var(--bg-sidebar); /* Dark green for tasks */
+  height: 20px;
+  border-radius: 4px;
+  box-shadow: var(--shadow-sm);
+}
+.pill {
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background-color: var(--bg-input);
+  color: var(--text-main);
+  border: 1px solid #cbd5e1;
+}
