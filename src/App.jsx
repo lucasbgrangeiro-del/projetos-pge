@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import { StoreProvider, useStore } from './context/StoreProvider';
 import Sidebar from './components/Sidebar';
 import Topbar from './components/Topbar';
@@ -48,9 +48,9 @@ function AppRoutes() {
 function App() {
   return (
     <StoreProvider>
-      <BrowserRouter>
+      <HashRouter>
         <AppRoutes />
-      </BrowserRouter>
+      </HashRouter>
     </StoreProvider>
   );
 }
